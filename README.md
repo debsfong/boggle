@@ -1,6 +1,8 @@
 Boggle Project
 ==============
 
+[See it Live](https://debsfong.github.io/boggle/)
+
 Assignment
 ----------
 
