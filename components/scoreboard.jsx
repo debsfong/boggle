@@ -8,7 +8,7 @@ class Scoreboard extends React.Component {
     }
     
     renderScores() {
-        let scores = this.props.scores
+        let scores = this.props.scores;
         if (Object.keys(scores).length > 0) {
             return Object.keys(scores).map((word) => {
                 return (
@@ -16,17 +16,17 @@ class Scoreboard extends React.Component {
                         <td>{word.toLowerCase()}</td>
                         <td>{scores[word]}</td>
                     </tr>
-                )
+                );
             })
         } else {
-            return (<tr></tr>)
+            return (<tr></tr>);
         }
     }
     
     getTotal() {
         let total = 0
         Object.values(this.props.scores).map((score) => {
-            total += score
+            total += score;
         })
         return total;
     }

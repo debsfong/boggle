@@ -18318,16 +18318,35 @@ var Game = function (_React$Component) {
         _this.selected = [];
         _this.state = { grid: _this.grid,
             currentWord: "",
-            scores: {}
+            scores: {},
+            invalid: false
         };
 
         _this.selectLetter = _this.selectLetter.bind(_this);
         _this.deselectLetter = _this.deselectLetter.bind(_this);
         _this.submitWord = _this.submitWord.bind(_this);
+        _this.renderErrors = _this.renderErrors.bind(_this);
         return _this;
     }
 
     _createClass(Game, [{
+        key: 'renderErrors',
+        value: function renderErrors() {
+            if (this.state.invalid == true) {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'errors' },
+                    'That is not a valid move!'
+                );
+            } else {
+                return _react2.default.createElement(
+                    'div',
+                    { className: 'instructions' },
+                    'Form words with adjacent letters'
+                );
+            }
+        }
+    }, {
         key: 'deselectLetter',
         value: function deselectLetter(pos) {
             this.grid[pos[0]][pos[1]].recent = false;
@@ -18347,6 +18366,7 @@ var Game = function (_React$Component) {
     }, {
         key: 'selectLetter',
         value: function selectLetter(pos, value) {
+            this.setState({ invalid: false });
             var curPos = this.selected[this.selected.length - 1];
 
             if (curPos != null) {
@@ -18366,6 +18386,8 @@ var Game = function (_React$Component) {
                 var newWord = this.state.currentWord + value;
 
                 this.setState({ currentWord: newWord, grid: this.grid });
+            } else {
+                this.setState({ invalid: true });
             }
         }
     }, {
@@ -18392,6 +18414,7 @@ var Game = function (_React$Component) {
                     _react2.default.createElement('img', { src: 'logo.png' })
                 ),
                 _react2.default.createElement(_board2.default, { grid: this.state.grid, selectLetter: this.selectLetter }),
+                this.renderErrors(),
                 _react2.default.createElement(_current2.default, { currentWord: this.state.currentWord, submitWord: this.submitWord }),
                 _react2.default.createElement(_scoreboard2.default, { scores: this.state.scores })
             );

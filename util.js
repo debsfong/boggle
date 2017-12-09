@@ -7,9 +7,9 @@ export const generateBoard = (gridSize = 5) => {
         for(let j = 0; j < gridSize; j++) {
             let value = dice[i*5 + j][Math.floor(Math.random() * 6)].toUpperCase();
             if (value == "Q") {
-                value = "Qu"
+                value = "Qu";
             }
-            const tile = {value: value, pos: [i, j], selected: false, recent: false}
+            const tile = {value: value, pos: [i, j], selected: false, recent: false};
             grid[i].push(tile);
         }
     }
@@ -40,37 +40,37 @@ export const shuffleDice = () => {
 
 export const adjacentPos = (curPos, pos) => {
     if (curPos == null) {
-        return true
+        return true;
     }
     
-    let row = pos[0]
-    let col = pos[1]
+    let row = pos[0];
+    let col = pos[1];
     
     if ( (Math.abs(curPos[0] - row) <= 1) && (Math.abs(curPos[1] - col) <= 1) ) {
-        return true
+        return true;
     } else {
-        return false
+        return false;
     }
 }
 
 export const getScore = (word) => {
     switch(true) {
         case (word.length < 3):
-            return 0
+            return 0;
             break;
         case (word.length < 5):
-            return 1
+            return 1;
             break;
         case (word.length < 6):
-            return 2
+            return 2;
             break;
         case (word.length < 7):
-            return 3
+            return 3;
             break;
         case (word.length < 8):
-            return 5
+            return 5;
             break;
         default:
-            return 11
+            return 11;
     }
 }

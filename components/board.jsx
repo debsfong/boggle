@@ -9,8 +9,8 @@ class Board extends React.Component {
                 <div className="row">
                     {
                         row.map ( (die, j) => {
-                            let pos = [i, j]
-                            return (<Die die={die} selectLetter={() => this.props.selectLetter(pos, die.value)}/>)
+                            let pos = [i, j];
+                            return (<Die die={die} selectLetter={() => this.props.selectLetter(pos, die.value)}/>);
                         })
                     }
                 </div>
